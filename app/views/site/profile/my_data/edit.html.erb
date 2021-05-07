@@ -1,0 +1,66 @@
+<%= content_for :javascripts do %>
+  <%= javascript_include_tag 'backoffice' %>
+  <%= javascript_include_tag 'site/profile/ads' %>
+<% end %>
+
+<div class="container">
+
+  <div class="row" style="padding-left:15%;">
+
+    <div class="col-lg-12">
+
+      <% if @profile_member.errors.any? %>
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <% @profile_member.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>            
+        </div>
+      <% end %>
+
+      <h2 class="my-4"><%= "#{t('messages.editing', model: @profile_member.model_name.human)}" %> </h2><br>
+
+      <div class="list-group">
+
+      <%= form_for(@profile_member, url: site_profile_my_datum_path(@profile_member)) do |f| %>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control", placeholder: "Nome" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+                <%= f.label :surname %>
+                <%= f.text_field :surname, class: "form-control", placeholder: "Sobrenome" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <%= f.label :birthdate %>
+                    <%= f.date_field :birthdate, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <%= submit_tag "Gravar", class: "btn btn-primary" %>
+            </div>
+        </div>
+        
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="col-lg-12">
+      <% 30.times do %><br><% end %>
+  </div>
+</div>
+</div>

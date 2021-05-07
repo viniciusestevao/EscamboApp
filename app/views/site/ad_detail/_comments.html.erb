@@ -1,0 +1,42 @@
+<% @ad.comments.each do |comment| %>
+    <div class="row">
+        <div class="col-md-12">
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            <%= comment.member.email %>
+            <span class="pull-right"><%= l comment.created_at %></span>
+            <p><%= comment.body %></p>
+            <% if comment.member.id == current_member.id %>
+              <%= rating_for_user @ad, current_member, 'quality' %>
+            <% end %>
+        </div>
+    </div>
+    <hr>
+<% end %>
+
+<%= form_tag site_comments_path do %>
+  <div class="modal" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Deixe seu comentário</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Comentário</label>
+            <%= text_area :comment, :body, class: "form-control", placeholder: "Comente o que achou do produto", rows: 5 %>
+            <%= text_field :comment, :ad_id, value: @ad.id %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= submit_tag "Enviar", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

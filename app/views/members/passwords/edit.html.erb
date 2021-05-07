@@ -1,0 +1,47 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="container">    
+  <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-2">                    
+    <div class="panel panel-info" >
+      <div class="panel-heading">
+          <div class="panel-title">Alterando sua Senha</div>
+      </div>  
+
+      <div style="padding-top:10px" class="panel-body">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "members/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="field">
+            <%= f.label :password, "Nova Senha" %><br />
+            <% if @minimum_password_length %>
+              <em>(mínimo de <%= @minimum_password_length %> caracteres)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :password_confirmation, "Confirmar Nova Senha" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+          <br>
+          <div class="actions">
+            <%= f.submit "Confirmar" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>  
+</div>  
+
+<% flash.each do |key, value| %>
+  <%= javascript_tag "$.notify( { message: '#{value}'}, { type: 'danger', placement: { from: 'top', align: 'center' }});" %>
+<% end %>    
+
+<% unless devise_error_messages!.blank? %>
+  <% resource.errors.full_messages.each do |message| %>
+    <%= javascript_tag "$.notify( { message: '#{message}'}, { type: 'danger', placement: { from: 'top', align: 'center' }});" %>
+  <% end %>    
+<% end %>    

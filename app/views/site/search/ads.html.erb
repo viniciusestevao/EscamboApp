@@ -1,0 +1,25 @@
+
+  <% 5.times do %><br><% end %>
+    <div class="container">
+      <div class="row">
+        
+        <%= render partial: 'site/shared/sidebar' %>
+  
+        <div id="home-detail" class="col-lg-9">
+            
+            <div class="row">
+                <div class="well col-lg-12">
+                    <h4><%= "Pesquisando: #{@q}" %></h4>
+                </div>
+            </div>
+
+            <div class="row">            
+                <%= render partial: 'site/shared/ads' %>
+            <!--/div-->
+  
+        </div>
+  
+      </div>
+  
+    </div>
+    <% 8.times do %><br><% end %>

@@ -1,0 +1,37 @@
+<div class="thumbnail">
+    <%= image_tag @ad.picture.url(:large) %>
+    <br>
+    <div class="caption-full">
+        <h4 class="pull-right"><%= humanized_money_with_symbol @ad.price %></h4>
+        <h4><a href="#"><%= @ad.title %></a>
+        </h4>
+        <p><%= @ad.description.html_safe %></p>
+        <div class="ratings">
+            <!--p class="pull-right">3 reviews</p-->
+            <p>
+                <%= rating_for @ad, 'quality' %>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="well">
+
+    <% if member_signed_in? %>
+      <div class="row">
+          <%= link_to '#', class: "btn btn-success text-right", data: {toggle: 'modal', target: '#commentModal'} do %>    
+            Comentar
+          <% end %>
+      </div>
+      <hr>
+    <% else %>
+      <div class="row">
+        <button type="button" class="btn btn-success" disabled="disabled", data-toggle="modal" data-target="#commentModal">
+          Efetue Login para comentar
+        </button>
+      </div>
+      <hr>
+    <% end %>
+    
+    <%= render partial: 'site/ad_detail/comments' %>    
+</div>
