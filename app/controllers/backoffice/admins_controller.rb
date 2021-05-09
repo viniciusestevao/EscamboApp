@@ -1,5 +1,5 @@
 class Backoffice::AdminsController < BackofficeController
-  before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :set_admin, only: [:edit, :update, :destroy, :show]
   after_action :verify_authorized, only: [:new, :destroy]
   after_action :verify_policy_scoped, only: :index
 
@@ -16,6 +16,15 @@ class Backoffice::AdminsController < BackofficeController
   def new
     @admin = Admin.new
     authorize @admin
+  end
+
+  def show
+    #@admin = Admin.find(params[:id])
+   # respond_to do |format|
+   #     format.html # views html.erb
+   #     format.json { render json: @admin } 
+        #format.xml { render xml: @admin}
+   # end
   end
 
   def create
