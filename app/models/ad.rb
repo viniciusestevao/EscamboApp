@@ -1,4 +1,8 @@
 class Ad < ApplicationRecord
+
+  # Statuses
+  enum status: [:active, :processing, :sold]
+
   #Contants
   QTDE_PER_PAGE = 6
   

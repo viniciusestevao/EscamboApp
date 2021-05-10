@@ -5,6 +5,7 @@ class Member < ApplicationRecord
   # Associations
   has_many :ads
   has_one :profile_member
+  has_one :order
   accepts_nested_attributes_for :profile_member
 
   # Validations

@@ -30,6 +30,7 @@ gem 'friendly_id'
 gem 'kaminari'   # Paginação
 gem 'kaminari-i18n'
 gem 'ratyrate'
+gem 'pagseguro-oficial'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '3.3.7'
@@ -78,6 +79,7 @@ group :development, :test do
   gem 'rails-erd'
   gem 'faker'
   gem 'doctor_ipsum'
+  gem 'rack-cors', :require => 'rack/cors'
 end
 
 group :development do
