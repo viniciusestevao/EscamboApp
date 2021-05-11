@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Rosa Azul</title>
+
+    <%= wicked_pdf_stylesheet_link_tag    'application' %>
+    <%= wicked_pdf_stylesheet_link_tag    'backoffice' %>
+
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body>
+    <div id="global-spin" class="loading" style="display: none;">Loading&#8230;</div>
+
+    <%= yield %>
+
+    <%= wicked_pdf_javascript_include_tag 'application' %>
+    <%= wicked_pdf_javascript_include_tag 'backoffice' %>
+  </body>
+</html>
+

@@ -33,6 +33,16 @@ class Backoffice::CategoriesController < BackofficeController
     end
   end
 
+  def show
+    @categories = Category.all
+    respond_to do |format|
+      format.html
+      format.pdf do 
+        render pdf: "categories"
+      end
+    end
+  end
+
   private
 
     def set_category

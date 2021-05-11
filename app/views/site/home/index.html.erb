@@ -9,7 +9,7 @@
           <!--div class="col-md-1"><h4 style="text-align:center">Buscar</h4></div-->
           <div class="col-md-6">
             <div class="input-group mb-3">
-              <%= text_field_tag(:q, params[:q], { class: "form-control", placeholder: "O que está procurando ?" }) %>
+              <%= text_field_tag(:q, params[:q], { class: "form-control", placeholder: "#{cookies[:search_term] ? "Buscar novamente: " + cookies[:search_term] : 'O que está procurando ?'}" }) %>
               
               <%= submit_tag("Pesquisar", class: "btn btn-outline-secondary", id: "button-addon2") %>
             </div>

@@ -29,7 +29,10 @@ gem 'friendly_id'
 #gem 'wiselinks'   # Serve para controlar ida e volta com links visuais ao carregar anúncios por AJAX, mas não funciona com esse Rails
 gem 'kaminari'   # Paginação
 gem 'kaminari-i18n'
-gem 'ratyrate'
+gem 'ratyrate'  # Estrelas para avaliação do item
+gem 'wkhtmltopdf-binary'  # Wicked PDF para gerar PDF
+gem 'wicked_pdf'
+gem 'chartkick' # Gráficos/Charts
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '3.3.7'

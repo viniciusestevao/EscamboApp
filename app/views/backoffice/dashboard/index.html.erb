@@ -1,3 +1,5 @@
 <h1 class="page-header"><%= "Dashboard" %></h1>
 <br>
 <h1 class="h3 mb-4 text-gray-800"><%= "Bem vindo, #{ current_admin.email }" %></h1><br>
+<%= pie_chart @categories_groups %>
+<br><%= column_chart @categories_groups %>
