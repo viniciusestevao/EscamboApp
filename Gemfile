@@ -33,6 +33,8 @@ gem 'ratyrate'  # Estrelas para avaliação do item
 gem 'wkhtmltopdf-binary'  # Wicked PDF para gerar PDF
 gem 'wicked_pdf'
 gem 'chartkick' # Gráficos/Charts
+gem 'sidekiq' # Trabalha em conjunto com ActiveJob para enfileirar processamentos
+gem 'rolify'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap', '3.3.7'

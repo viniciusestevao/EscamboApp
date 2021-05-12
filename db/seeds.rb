@@ -41,11 +41,14 @@ puts "MEMBRO PADRÃO cadastrado com sucesso !"
 ###############################################################
 
 puts "Cadastrando ADMINISTRADOR PADRÃO..."
-Admin.create!(name: "Administrador",
+adm = Admin.create!(name: "Administrador",
               email: "admin@admin.com",
               password: "admin1",
-              password_confirmation: "admin1",
-              role: 0)
+              password_confirmation: "admin1")
+
+adm.add_role(Role.availables[0])
+adm.add_role(Role.availables[1])
+
 puts "ADMINISTRADOR PADRÃO cadastrado com sucesso !"
 
 ###############################################################
