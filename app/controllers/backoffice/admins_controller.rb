@@ -21,7 +21,7 @@ class Backoffice::AdminsController < BackofficeController
   def create
     #@admin = AdminService.create(params_admin)
     @admin = Admin.new(params_admin)
-
+    update_roles
     admin_name = @admin.name
     if @admin.save
       redirect_to backoffice_admins_path, notice: "O administrador (#{admin_name}) foi criado com sucesso."
@@ -36,6 +36,7 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def update
+    update_roles
     admin_name = @admin.name
     if @admin.update(params_admin)
       AdminMailer.update_email(current_admin, @admin).deliver_now #esse método para o servidor e envia um e-mail imediatamente
@@ -58,6 +59,22 @@ class Backoffice::AdminsController < BackofficeController
 
 
   private
+    def remove_all_roles
+      Role.availables.each do |role|
+        @admin.remove_role(role)
+      end
+    end
+
+    def update_roles
+      remove_all_roles
+      roles = params[:admin].extract!(:role_ids)
+
+      roles[:role_ids].each do |role|
+        if role != ""
+          @admin.add_role(role)
+        end
+      end
+    end
 
     def set_admin
       @admin = Admin.find(params[:id])

@@ -18,7 +18,7 @@ class Backoffice::SendMailController < ApplicationController
             #  @admin = Admin.find(1)
             #  AdminMailer.update_email(current_admin, @admin).deliver_now
             @mgs_notify = "Mensagem enviada com sucesso para (#{params[:'recipient-text']})."
-            AdminMailer.send_mail(current_admin, params[:'recipient-text'],params[:'subject-text'],params[:'message-text']).deliver_now #esse método para o servidor e envia um e-mail imediatamente
+            AdminMailer.send_mail(current_admin, params[:'recipient-text'],params[:'subject-text'],params[:'message-text']).deliver_later #deliver_now para o servidor e envia imediatamente, deliver_later envia depois
         rescue
             @mgs_notify = "Não foi possivel enviar mensagem para (#{params[:'recipient-text']})."
         end

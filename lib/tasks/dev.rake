@@ -25,12 +25,12 @@ namespace :dev do
     puts "Cadastrando ADMINISTRADORES PADRÃO..."
 
     10.times do
-        Admin.create!(
-          name: Faker::Name.name,
-          email: Faker::Internet.email,
-          password: "admin1",
-          password_confirmation: "admin1",
-          role: [0,1,1].sample)
+        admi = Admin.create!(
+                name: Faker::Name.name,
+                email: Faker::Internet.email,
+                password: "admin1",
+                password_confirmation: "admin1") #, role: [0,1,1].sample)
+        admi.add_role(Role.availables[1])
     end
 
     puts "ADMINISTRADORES PADRÃO cadastrados com sucesso!"

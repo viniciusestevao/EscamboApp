@@ -1,6 +1,8 @@
 class Site::HomeController < SiteController
   
   def index
+    TailsWorker.perform_async("Rafa")
+
     cookies[:app_name] = "Rosazul"
     cookies[:Novoteste] = { value: "Teste", expires: 1.hour.from_now}
 
